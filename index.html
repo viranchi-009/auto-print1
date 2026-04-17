@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Print Test</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .receipt {
+      border: 1px solid black;
+      padding: 20px;
+      width: 300px;
+      margin: auto;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body onload="autoPrint()">
+
+  <div class="receipt">
+    <h2>Test Receipt</h2>
+    <p>Item: Coffee</p>
+    <p>Price: ₹50</p>
+    <p>Date: <span id="date"></span></p>
+  </div>
+
+  <script>
+    function autoPrint() {
+      // set current date
+      document.getElementById("date").innerText = new Date().toLocaleString();
+
+      // delay to ensure content loads
+      setTimeout(() => {
+        window.print();
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
